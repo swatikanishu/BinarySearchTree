@@ -41,15 +41,29 @@ public class BinaryTree {
         print(root.right);
     }
 
-    //Size method For checking all nodes are added or Not
     public int size(Node node) {
-        /*
-         *  if condition is true then node is empty if condition is false then
-         * else condition is worked
-         */
+
         if (node == null)
             return 0;
         else
             return(size(node.left) + 1 + size(node.right));
+    }
+    //nodePresent method this is parameterized method.root and value are passed
+    public boolean nodePresent(Node root, int val) {
+        if (root == null) {
+            return false;
+        }
+        Boolean isPresent = false;
+        while (root != null) {
+            if (val < root.data) {
+                root = root.left;
+            } else if (val > root.data) {
+                root = root.right;
+            } else {
+                isPresent = true;
+                break;
+            }
+        }
+        return isPresent;
     }
 }
